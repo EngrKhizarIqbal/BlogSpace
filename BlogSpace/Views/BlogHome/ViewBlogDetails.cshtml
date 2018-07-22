@@ -1,0 +1,42 @@
+﻿@model ReadBlogViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutBlog.cshtml";
+    ViewBag.Title = "Blog Details.";
+    var top10Blogs = ViewBag.top10Blogs as List<Blog>;
+}
+
+<!-- technology -->
+<div class="technology">
+    <div class="container">
+        <div class="col-md-9 technology-left">
+            <div class="agileinfo">
+
+                <h2 class="w3">@Model.Title</h2>
+                <div class="single">
+                    <img src="~/Images/BlogImages/@Model.ImageName" class="img-responsive" alt="">
+                    <div class="b-bottom">
+                        <p class="sub">@Html.Raw(Model.BlogContent)</p>
+                        <p>On @Model.PublishedOn.ToString("MMMM yy") <a class="span_link"><span class="glyphicon glyphicon-eye-open"></span>@(Model.NoOfViews + 1) </a></p>
+                    </div>
+                </div>
+                <div id="share"></div>
+            </div>
+        </div>
+
+        @Html.Partial("_PopularPostRightSide", top10Blogs)
+    </div>
+</div>
+<!-- // technology -->
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+@section Scripts{
+    <script type="text/javascript">
+        $((function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://localhost-blogspace.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })());
+    </script>
+}

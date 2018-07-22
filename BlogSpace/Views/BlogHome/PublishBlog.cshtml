@@ -1,0 +1,115 @@
+﻿@model PublishBlogViewModel
+@{
+    ViewBag.Title = "Publish Blog";
+    Layout = "~/Views/Shared/_LayoutBlog.cshtml";
+}
+
+@section Styles {
+    @Styles.Render("~/Scripts/BlogCSS")
+}
+
+<!-- technology -->
+<div class="technology">
+    <div class="container">
+        @using (Html.BeginRouteForm("SaveBlog", FormMethod.Post, new { @class = "form", role = "form", enctype = "multipart/form-data", id = "formBlogPost" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="text-danger">
+                @Html.ValidationSummary(true)
+            </div>
+
+            <div class="form-horizontal">
+                <div class="form-group col-md-12">
+                    @Html.TextBoxFor(model => model.BlogTitle, htmlAttributes: new { @class = "form-control", id = "blogTitle", placeholder = "Enter blog title..." })
+                    @Html.ValidationMessageFor(model => model.BlogTitle, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group col-md-12">
+                    @Html.TextBoxFor(model => model.ShortDescription, htmlAttributes: new { @class = "form-control", id = "shorDescription", placeholder = "Enter Short Description..." })
+                    @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group col-md-12">
+                    @Html.FileBoxFor(model => model.BlogImage, new { htmlAttributes = new { placeholder = "Add blog image..." } })
+                    @Html.ValidationMessageFor(model => model.BlogImage, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group col-md-12">
+                    @Html.TextAreaFor(model => model.BlogContent, htmlAttributes: new { id = "editor", placeholder = "Enter the content of your blog post here..." })
+                    @Html.ValidationMessageFor(model => model.BlogContent, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group col-md-12">
+                    <div id="divTags" name="Tags" class="input textarea clearfix" placeholder="Enter Tags..."></div>
+                    <span id="blogTagsValidation" class="text-danger field-validation-valid" data-valmsg-for="Tags" data-valmsg-replace="true"></span>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <button class="btn btn-success btn-lg pull-right" id="btnPublishBlog">Publish</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<!-- // technology -->
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/BlogJS")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $((function () {
+            'use strict'
+
+            $.trumbowyg.svgPath = "@Url.Content("~/Scripts/trumbowyg/ui/icons.svg")";
+            var publishBlogUrl = "@Url.RouteUrl("SaveBlog")";
+
+            var tags = [];
+            @foreach(var tag in Model.Tags)
+            {
+                @:tags.push("@tag");
+            }
+
+            var editor = $('#editor').trumbowyg();
+            var blogTags = new Taggle('divTags', {
+                tags: tags,
+                duplicateTagClass: 'bounce',
+                autogrowOnEnter: true
+            });
+
+            $('#formBlogPost').on('submit', function (event) {
+                var $form = $(this);
+                var tags = blogTags.getTagValues();
+
+                $form.find('#blogTags').remove();
+                $form.append($.parseHTML(getTagaAsInputs(tags))[0]);
+
+                if (tags.length == 0) {
+                    $('span#blogTagsValidation').text('Enter atleast one tag.')
+                }
+
+                return tags.length > 0;
+            });
+
+            function getTagaAsInputs(tags) {
+                var tagsToInputHtml = '<div id="blogTags">';
+
+                $.each(tags, function (index, tag) {
+                    tagsToInputHtml += '<input type="hidden" name="Tags[' + index + ']" value="' + tag + '" />';
+                });
+
+                tagsToInputHtml += '</div>';
+
+                return tagsToInputHtml;
+            }
+        })());
+    </script>
+}
+
+@*
+    <p>Hello.</p><p>this is first content.</p><p><br></p><p><a href="aaaaaa" title="ddddd">ssss</a><br></p>
+    <p>Hello.</p><p>this is first content.</p><p><br></p><p><a href="aaaaaa" title="ddddd">ssss</a><br></p>
+    <p>Hello.</p><p>this is first content.</p><p><br></p><p><a href="aaaaaa" title="ddddd">ssss</a><br></p>
+*@
+
+

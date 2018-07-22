@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Blog>
+@{
+    Layout = null;
+}
+
+<!-- technology-right -->
+<div class="col-md-3 technology-right">
+    <div class="blo-top1">
+        <div class="tech-btm">
+            <h4>Popular Posts </h4>
+            @foreach (var blog in Model)
+            {
+                <div class="blog-grids wow fadeInDown" data-wow-duration=".8s" data-wow-delay=".2s">
+                    <div class="blog-grid-left">
+                        <a href="@Url.RouteUrl("ViewBlogDetails", new
+                                    { blogUrlFriendlyName = blog.PageFriendlyUrlTitle })">
+                            <img src="~/Images/BlogImages/@blog.ImageName" class="img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="blog-grid-right">
+                        <h5>
+                            <a href="@Url.RouteUrl("ViewBlogDetails", new
+                                    { blogUrlFriendlyName = blog.PageFriendlyUrlTitle })">
+                                @blog.Title
+                            </a>
+                        </h5>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- // technology-right -->
+<div class="clearfix"></div>

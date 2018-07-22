@@ -1,0 +1,38 @@
+﻿using System.Web.Optimization;
+
+namespace BlogSpace
+{
+    public class BundleConfig
+    {
+        public static void RegisterBundles(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                        "~/Scripts/jquery-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                        "~/Scripts/jquery.validate*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+                        "~/Scripts/modernizr-*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/bootstrap.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/js").Include(
+                      "~/Scripts/wow.min.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/BlogJS").Include(
+                      "~/Scripts/trumbowyg/trumbowyg.min.js",
+                      "~/Scripts/taggle.js"));
+
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/bootstrap.css",
+                      "~/Content/style.css",
+                      "~/Content/animate.min.css"));
+
+            bundles.Add(new StyleBundle("~/Scripts/BlogCss").Include(
+                      "~/Scripts/trumbowyg/trumbowyg.min.css",
+                      "~/Content/taggle.css"));
+        }
+    }
+}
