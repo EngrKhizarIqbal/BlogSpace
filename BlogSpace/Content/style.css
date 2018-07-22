@@ -1,39 +1,11 @@
-html, body{
-font-family: 'Raleway', sans-serif;
-	font-size: 100%;
-	background: #f7f7f7;
+.blog-body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 100%;
+    background: #f7f7f7;
 }
-body a,.grid_1,plan_1,plan_1.one,plan_1.two,i.icon1, i.icon2, i.icon3, i.icon4, i.icon5, i.icon6 {
-	transition:0.5s all;
-	-webkit-transition:0.5s all;
-	-moz-transition:0.5s all;
-	-o-transition:0.5s all;
-	-ms-transition:0.5s all;
-}
+
 a:hover{
  text-decoration:none;
-}
-input[type="button"],input[type="submit"],li.parallelogram{
-	transition:0.5s all;
-	-webkit-transition:0.5s all;
-	-moz-transition:0.5s all;
-	-o-transition:0.5s all;
-	-ms-transition:0.5s all;
-}
-h1,h2,h3,h4,h5,h6{
-	margin:0;
-     font-family: 'Raleway', sans-serif;
-}	
-p{
-	margin:0;
-	font-family: 'Open Sans', sans-serif;
-}
-ul{
-	margin:0;
-	padding:0;
-}
-label{
-	margin:0;
 }
 /*-- Header --*/
 .header {
@@ -126,46 +98,6 @@ label.icon-search span {
 }
 /*--//search--*/
 
-/*--social-icons--*/
-.social-icons {
-    margin-top: 0.5em;
-}
-.social-icons ul li {
-    display: inline-block;
-    margin-left: 1em;
-}
-.social-icons ul li a {
-    background: url(../images/social-icons.png)no-repeat -3px -2px;
-    display: block;
-    height: 22px;
-    width: 20px;
-    -webkit-transition: .5s all;
-    transition: .5s all;
-    -moz-transition: .5s all;
-    padding: 0;
-}
-.social-icons ul li a.pin {
-    background-position: -3px -38px;
-}
-.social-icons ul li a.in {
-    background-position: -3px -78px;
-}
-.social-icons ul li a.be {
-    background-position: -3px -115px;
-}
-.social-icons ul li a.you {
-    background-position: -3px -154px;
-}
-.social-icons ul li a.vimeo {
-    background-position: -2px -192px;
-}
-.social-icons ul li a:hover{
-	-webkit-transform:rotateY(360deg);
-	transform:rotateY(360deg);
-	-moz-transform:rotateY(360deg);
-	-o-transform:rotateY(360deg);
-	-ms-transform:rotateY(360deg);
-}
 .header_right {
     float: left;
     margin-left: 0em;
@@ -481,6 +413,7 @@ i.glyphicon.glyphicon-comment {
     height: 32px;
     display: inline-block;
     border: 1px solid #d2d1d1;
+    cursor:  pointer;
 }
 .soci  ul li a.fb{
     background: url(../images/social.png) no-repeat -48px -7px;
@@ -1629,9 +1562,6 @@ span.glyphicon.glyphicon-comment, span.glyphicon.glyphicon-eye-open, span.glyphi
 .head-left {
     width: 3%;
 }
-.social-icons ul li {
-    margin-left: 0.5em;
-}
 .header_right {
     margin-left: 0em;
     margin-right: 0em;
@@ -1739,9 +1669,6 @@ p.sub {
 }
 /*-- responsive design --*/
 @media (max-width:991px) {
-.social-icons ul li {
-    margin-left: 0px;
-}
 .navbar-nav > li > a {
     font-size: 14px;
     padding: 10px 6px;
@@ -1924,11 +1851,6 @@ h5.top {
 .head-left {
     width: 20%;
     float: left;
-}
-.social-icons {
-    width: 33%;
-    float: right;
-	margin-top: 0.88em;
 }
 }
 /*-- responsive design --*/
@@ -2276,9 +2198,6 @@ label.on {
 .head-left {
     width: 18%;
 }
-.social-icons {
-    width: 35%;
-}
 .coment-form input[type="submit"] {
     width: 57%;
 	font-size:14px;
@@ -2294,9 +2213,6 @@ label.on {
 }
 .head-left {
     width: 4%;
-}
-.social-icons {
-    width: 36%;
 }
 .header_right {
     width: 58%;
@@ -2384,9 +2300,6 @@ label.on {
 }
 .search-1 input[type="search"] {
     width: 81%;
-}
-.social-icons {
-    width: 44%;
 }
 .header_right {
     width: 53%;

@@ -47,9 +47,9 @@
                             </div>
                             <div class="soci">
                                 <ul>
-
-                                    <li class="hvr-rectangle-out"><a class="twit" href="#"></a></li>
-                                    <li class="hvr-rectangle-out"><a class="pin" href="#"></a></li>
+                                    <li class="hvr-rectangle-out"><a class="fb shareSocial"></a></li>
+                                    <li class="hvr-rectangle-out"><a class="twit shareSocial"></a></li>
+                                    <li class="hvr-rectangle-out"><a class="goog shareSocial"></a></li>
                                 </ul>
                             </div>
                             <div class="clearfix"></div>
@@ -59,7 +59,9 @@
                     </div>
                 }
                 <div class="bht1" style="float: none; display: block; margin-bottom: 10px;">
-                    <a href="@Url.RouteUrl("blogHome", new { pageNo = ((int)ViewBag.pageNo + 1) })">Load More...</a>
+                    <a href="@Url.RouteUrl("blogHome", new { pageNo = ((int)ViewBag.pageNo + 1) })">
+                        Load More...
+                    </a>
                 </div>
             }
             else

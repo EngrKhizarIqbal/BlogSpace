@@ -10,16 +10,23 @@
     <div class="container">
         <div class="col-md-9 technology-left">
             <div class="agileinfo">
-
                 <h2 class="w3">@Model.Title</h2>
                 <div class="single">
                     <img src="~/Images/BlogImages/@Model.ImageName" class="img-responsive" alt="">
                     <div class="b-bottom">
                         <p class="sub">@Html.Raw(Model.BlogContent)</p>
                         <p>On @Model.PublishedOn.ToString("MMMM yy") <a class="span_link"><span class="glyphicon glyphicon-eye-open"></span>@(Model.NoOfViews + 1) </a></p>
+
+                        <div class="soci">
+                            <ul>
+                                <li class="hvr-rectangle-out"><a class="fb shareSocial"></a></li>
+                                <li class="hvr-rectangle-out"><a class="twit shareSocial"></a></li>
+                                <li class="hvr-rectangle-out"><a class="goog shareSocial"></a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
-                <div id="share"></div>
             </div>
         </div>
 

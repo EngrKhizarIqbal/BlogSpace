@@ -14,7 +14,9 @@
 </head>
 
 <body>
-    @RenderBody()
+    <div class="blog-body">
+        @RenderBody()
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -22,6 +24,35 @@
     @RenderSection("Scripts", required: false)
     <script>
         new WOW().init();
+        $((function () {
+            var newWindowProps = "toolbar=0,status=0,width=548,height=325";
+            var gPlusShareLink = "https://plus.google.com/share?url=**link**";
+            var fbShareLink = "https://www.facebook.com/sharer/sharer.php?u=**link**&v=1";
+            var twittrShareLink = "https://twitter.com/intent/tweet?url=**link**&text=**text**";
+
+            $('.shareSocial').each(function (index, element) {
+                var $self = $(this);
+                var shareLink = "";
+
+                if ($self.hasClass('fb')) {
+                    shareLink = fbShareLink.replace("**link**", document.location.href);
+                }
+
+                if ($self.hasClass('twit')) {
+                    shareLink = twittrShareLink
+                        .replace("**link**", document.location.href)
+                        .replace("**text**", encodeURI(document.title));
+                }
+
+                if ($self.hasClass('goog')) {
+                    shareLink = gPlusShareLink.replace("**link**", document.location.href);
+                }
+
+                var onClick = "window.open('" + shareLink + "', 'sharer', 'toolbar=0, status=0, width=548, height=325');";
+
+                $self.attr("onclick", onClick);
+            });
+        })());
     </script>
 </body>
 </html>

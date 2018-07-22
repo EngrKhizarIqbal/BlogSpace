@@ -56,12 +56,13 @@
 @section Scripts {
     @Scripts.Render("~/Scripts/BlogJS")
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
 
     <script type="text/javascript">
         $((function () {
             'use strict'
 
-            $.trumbowyg.svgPath = "@Url.Content("~/Scripts/trumbowyg/ui/icons.svg")";
+            var editor = CKEDITOR.replace('editor');
             var publishBlogUrl = "@Url.RouteUrl("SaveBlog")";
 
             var tags = [];
@@ -69,8 +70,7 @@
             {
                 @:tags.push("@tag");
             }
-
-            var editor = $('#editor').trumbowyg();
+            
             var blogTags = new Taggle('divTags', {
                 tags: tags,
                 duplicateTagClass: 'bounce',
